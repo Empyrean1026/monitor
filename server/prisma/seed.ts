@@ -249,7 +249,7 @@ async function main(): Promise<void> {
     for (const batch of chunks(orderRows, 500)) await transaction.order.createMany({ data: batch });
     for (const batch of chunks(itemRows, 500)) await transaction.orderItem.createMany({ data: batch });
     await transaction.trafficRecord.createMany({ data: trafficRows });
-  });
+  }, { maxWait: 10_000, timeout: 120_000 });
 
   console.info(`Seeded 1 admin, ${CUSTOMER_COUNT} customers, ${PRODUCT_COUNT} products, ${ORDER_COUNT} orders, ${itemRows.length} order items, and ${TRAFFIC_DAYS} traffic records.`);
 }
