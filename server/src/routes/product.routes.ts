@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { productCategoriesController, productListController, slowMovingProductsController } from '../controllers/product.controller.js';
+import { authMiddleware } from '../middlewares/auth.js';
+import { asyncHandler } from '../utils/async-handler.js';
+import { validate } from '../middlewares/validate.js';
+import { productListQuerySchema, slowMovingProductsQuerySchema } from '../validators/product.validator.js';
+export const productRouter = Router();
+productRouter.get('/categories', authMiddleware, asyncHandler(productCategoriesController));
+productRouter.get('/', authMiddleware, validate(productListQuerySchema, 'query'), asyncHandler(productListController));
+productRouter.get('/slow-moving', authMiddleware, validate(slowMovingProductsQuerySchema, 'query'), asyncHandler(slowMovingProductsController));

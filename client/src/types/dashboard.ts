@@ -1,0 +1,15 @@
+export type DashboardOverview = { totalRevenue: number; totalOrders: number; averageOrderValue: number; newCustomers: number; revenueGrowth: number; orderGrowth: number; customerGrowth: number; conversionRate: number };
+export type SalesTrendPoint = { date: string; revenue: number; orderCount: number; averageOrderValue: number };
+export type CategoryDistribution = { categoryId: string; categoryName: string; orderCount: number; revenue: number; percentage: number };
+export type TopProduct = { productId: string; productName: string; categoryName: string; quantitySold: number; revenue: number; estimatedProfit: number };
+export type RecentOrder = { orderNumber: string; customerName: string; status: string; paymentMethod: string; region: string; totalAmount: number; createdAt: string };
+export type OrderStatusSummary = { status: string; count: number; percentage: number };
+export type PaymentMethodSummary = { paymentMethod: string; orderCount: number; revenue: number; percentage: number };
+export type CustomerRegion = { region: string; revenue: number; userCount: number };
+export type ProductCategory = { id: string; name: string };
+export type ProductListItem = { id: string; name: string; sku: string; categoryId: string; categoryName: string; price: number; cost: number; stock: number; reorderLevel: number; status: string };
+export type ProductListResult = { items: ProductListItem[]; page: number; pageSize: number; total: number };
+export type InventoryAlert = { productId: string; productName: string; categoryName: string; sku: string; stock: number; reorderLevel: number; shortfall: number };
+export type SlowMovingProduct = ProductListItem & { recentQuantity: number; stockExcess: number; rule: string };
+export type Distribution = { label: string; count: number }; export type CustomerSummary = { newCustomerCount: number; existingCustomerCount: number; averageSpend: number; repeatPurchaseRate: number; ageDistribution: Distribution[]; genderDistribution: Distribution[]; memberLevelDistribution: Distribution[] }; export type HighValueCustomer = { id:string;name:string;email:string;totalSpend:number;orderCount:number;lastPurchaseAt:string|null;rfmScore:number }; export type CustomerListItem = {id:string;name:string;email:string;region:string;age:number|null;gender:string;memberLevel:string;registrationDate:string;totalSpend:number;orderCount:number;lastPurchaseAt:string|null}; export type CustomerListResult={items:CustomerListItem[];total:number;page:number;pageSize:number};
+export type DateRangeParams = { startDate: string; endDate: string };
