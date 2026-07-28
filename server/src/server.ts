@@ -9,7 +9,7 @@ const server = createServer(app);
 initialiseRealtime(server);
 let isShuttingDown = false;
 
-server.listen(env.PORT, () => {
+server.listen(env.PORT, '127.0.0.1', () => {
   console.info(`API server listening on port ${env.PORT}`);
 });
 
